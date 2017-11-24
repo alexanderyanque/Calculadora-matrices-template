@@ -86,7 +86,6 @@ public:
              int i,j,k;
              for (i=0;i<a.i;i++)
              {
-
                  for(j=0;j<b.j;j++)
                   {   c[i][j] = 0;
                       for(k=0;k<a.j;k++)
@@ -107,7 +106,7 @@ void busqueda(A x,Matriz<A,B,C> y)
     for(int w=0;w<B;w++){
         for(int q=0;q<C;q++)
             if(y.aa[q][w]==x){
-                cout<<"Encontrado en la posición: ["<<q<<"]["<<w<<"]";
+                cout<<"Encontrado en la posicion: ["<<q<<"]["<<w<<"]";
                 return;}}
     cout<<"No encontrado \n";
     return;
@@ -196,6 +195,16 @@ void operator<<(Matriz<A,B,C> y,int x)
     return;
 }
 
+template<typename A,int B,int C>
+void operator/(Matriz<A,B,C> y,int x)
+{
+    for(int w=0;w<B;w++){
+        for(int q=0;q<C;q++)
+                cout<<(y.aa[q][w]/x)<<" ";
+                cout<<endl;}
+    return;
+}
+
 int main()
 {
     float a[4][4],c[4][4];
@@ -212,15 +221,26 @@ int main()
     Matriz<float,4,4> ejemplo3(c);
     Matriz<float,5,4> ejemplo4();
 
+    cout<<"Busqueda de 1.0 en ejemplo1 \n"<<endl;
     busqueda<float>(1.0,ejemplo1); cout<<endl<<endl;
+    cout<<"Operacion << en ejemplo2(solo funciona con numeros enteros)"<<endl;
     ejemplo2<<2;cout<<endl<<endl;//solo funciona cuando es entero
+    cout<<"Suma de Matrices"<<endl;
     ejemplo1+ejemplo3;cout<<endl<<endl;
+    cout<<"Resta de Matrices"<<endl;
     ejemplo1-ejemplo3;cout<<endl<<endl;
+    cout<<"Multiplicacion de Matrices"<<endl;
     ejemplo1*ejemplo3;cout<<endl<<endl;
   //  ejemplo1*ejemplo4;//no funciona por que no tienen el mismo numero de filas y columnas
+    cout<<"Operacion -- con ejemplo1"<<endl;
     --ejemplo1;cout<<endl<<endl;
+    cout<<"Operacion ++ con ejemplo1"<<endl;
     ++ejemplo1;cout<<endl<<endl;
+    cout<<"Operacion -= con ejemplo1"<<endl;
     ejemplo1-=0.5;cout<<endl<<endl;
+    cout<<"Operacion += con ejemplo1"<<endl;
     ejemplo1+=1.6;cout<<endl<<endl;
+    cout<<"Division de una matriz por un numero"<<endl;
+    ejemplo1/4;cout<<endl<<endl;
     return 0;
 }
